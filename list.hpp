@@ -77,10 +77,21 @@ public:
         }
     }
 
-
-    void Sort()
+    template<typename F>
+    void Sort(F func)
     {
-        
+        for(int i = 0; i<size; i++)
+        {
+            for(Element* e = firstElement;  e->after != 0; e = e->after)
+            {
+                if(func(e->value, e->after->value))  
+                {
+                    T buff = e->value;
+                    e->value = e->after->value;
+                    e->after->value = buff;
+                }
+            }
+        }
     }
 
     Element* End()
@@ -135,5 +146,12 @@ public:
     }
 
     
+    ~List()
+    {
+        for(Element* e = firstElement;  e != 0; e = e->after)
+        {
+            delete e;
+        }
+    }
 
 };

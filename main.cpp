@@ -1,9 +1,12 @@
 #include "list.hpp"
 #include <iostream>
 
+bool bigger(int a, int b)
+{
+    return a < b;
+}
 
-
-int main()
+void run()
 {
     List<int> list = List<int>();
 
@@ -12,33 +15,15 @@ int main()
         list.Add(i);
     }
 
-    list.Print();
-
-    list[2] = 128;
-    list.RemoveAt(4);
-    
-    list.Print();
-
-    std::cout<<"Size: "<<list.Size();
-
-    
-    for(int i = 0; i<10; i++)
-    {
-        list.Add(i);
-    }
-
-    
-    for(int i = 0; i<10; i++)
-    {
-        list.Add(i);
-    }
+    list.Sort(bigger);
 
     list.Print();
+}
 
-    list.Remove(1, true);
-
-    
-    list.Print();
+int main()
+{
+    run();
 
     return 0;
 }
+
