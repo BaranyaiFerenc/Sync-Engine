@@ -1,3 +1,8 @@
+
+#ifndef LIST_HPP
+#define LIST_HPP
+
+
 #include <iostream>
 
 template<typename T>
@@ -36,6 +41,22 @@ public:
 
         newElement->before = lastElement;
         lastElement->after = newElement;
+    }
+
+    void Add(T* elements, int n)
+    {
+        for(int i = 0; i<n; i++)
+        {
+            this->Add(elements[i]);
+        }
+    }
+
+    void Add(List<T> list)
+    {
+        for(int i = 0; i<list.size; i++)
+        {
+            this->Add(list[i]);
+        }
     }
 
     void RemoveAt(unsigned int index)
@@ -185,6 +206,17 @@ public:
         }
     }
 
+    void Clear()
+    {
+        for(Element* e = firstElement;  e != 0; e = e->after)
+        {
+            delete e;
+        }
+
+        size = 0;
+        firstElement = 0;
+    }
+
     
     ~List()
     {
@@ -195,3 +227,6 @@ public:
     }
 
 };
+
+
+#endif

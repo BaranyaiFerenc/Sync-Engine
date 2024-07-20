@@ -1,4 +1,5 @@
 #include "string.hpp"
+#include "list.hpp"
 #include <iostream>
 
 bool bigger(int a, int b)
@@ -8,10 +9,11 @@ bool bigger(int a, int b)
 
 void run()
 {
-    String str;
-    str = "Hello World";
+    String str = "Hello World hogy vagy faszi? hogy vagy hogy talan";
 
-    std::cout<<str;
+    str.RemoveAt(3,7);
+
+    str.Split(' ').Print();
 }
 
 int main()
