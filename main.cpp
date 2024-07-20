@@ -1,4 +1,4 @@
-#include "list.hpp"
+#include "string.hpp"
 #include <iostream>
 
 bool bigger(int a, int b)
@@ -8,16 +8,10 @@ bool bigger(int a, int b)
 
 void run()
 {
-    List<int> list = List<int>();
+    String str;
+    str = "Hello World";
 
-    for(int i = 0; i<10; i++)
-    {
-        list.Add(i);
-    }
-
-    list.Sort(bigger);
-
-    list.Print();
+    std::cout<<str;
 }
 
 int main()

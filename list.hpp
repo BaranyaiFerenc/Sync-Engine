@@ -94,6 +94,22 @@ public:
         }
     }
 
+    unsigned int Find(T element)
+    {
+        unsigned int index = 0;
+        for(Element* e = firstElement;  e != 0; e = e->after)
+        {
+            if(e->value == element)  
+            {
+                return index;
+            }
+
+            index++;
+        }
+
+        return 0;
+    }
+
     Element* End()
     {
         Element* e = firstElement;
@@ -143,6 +159,30 @@ public:
         }
 
         throw "Element not found";
+    }
+
+    void operator=(List<T>& list)
+    {
+        for(Element* e = firstElement;  e != 0; e = e->after)
+        {
+            delete e;
+        }
+
+        firstElement = 0;
+        size = 0;
+
+        for(int i = 0; i<list.size; i++)
+        {
+            this->Add(list[i]);
+        }
+    }
+
+    void operator+=(List<T>& list)
+    {
+        for(int i = 0; i<list.size; i++)
+        {
+            this->Add(list[i]);
+        }
     }
 
     
