@@ -4,10 +4,11 @@
 #include "list.hpp"
 #include <iostream>
 
-template<int rows, int cols>
 class Matrix
 {
     double** data;
+
+    int rows, cols;
 
     double Multiplier(double* m1, double* m2)
     {
@@ -33,8 +34,11 @@ class Matrix
 
 public:
 
-    Matrix()
+    Matrix(int rows_, int cols_)
     {
+        rows = rows_;
+        cols = cols_;
+
         data = new double*[rows];
         for(int r = 0; r < rows; r++)
         {
@@ -46,21 +50,46 @@ public:
             }
         }
     }
-/*
-    Matrix(double** copy)
+
+    Matrix(const Matrix& mx)
     {
-        data = new T*[rows];
+        rows = mx.RowCount();
+        cols = mx.ColumnCount();
+
+        data = new double*[rows];
         for(int r = 0; r < rows; r++)
         {
-            data[r] = new T[cols];
+            data[r] = new double[cols];
 
             for(int c = 0; c<cols; c++)
             {
-                data[r][c] = copy[r][c];
+                data[r][c] = mx[r][c];
             }
         }
     }
-*/
+
+    void operator=(Matrix mx)
+    {
+        for(int r = 0; r < rows; r++)
+        {
+            delete[] data[r];
+        }
+
+        rows = mx.RowCount();
+        cols = mx.ColumnCount();
+
+        data = new double*[rows];
+        for(int r = 0; r < rows; r++)
+        {
+            data[r] = new double[cols];
+
+            for(int c = 0; c<cols; c++)
+            {
+                data[r][c] = mx[r][c];
+            }
+        }
+    }
+
     unsigned int ColumnCount() const {return cols;}
     unsigned int RowCount() const {return rows;}
 
@@ -77,9 +106,9 @@ public:
 
 
 
-    Matrix operator*(Matrix& mx)
+    Matrix operator*(Matrix mx)
     {
-        Matrix<rows, mx.ColumnCount()> result;
+        Matrix result(rows, mx.ColumnCount());
 
         for(int r = 0; r < rows; r++)
         {
@@ -95,10 +124,13 @@ public:
         return result;
     }
 
-    void Print() const
+    void Print(bool indent = false) const
     {
         for(int r = 0; r < rows; r++)
         {
+            if(indent)
+                std::cout<<"\t";
+
             for(int c = 0; c<cols; c++)
             {
                 std::cout<<"["<<data[r][c]<<"]";
@@ -113,7 +145,9 @@ public:
     {
         for(int r = 0; r < rows; r++)
         {
+            
             delete[] data[r];
+            
         }
     }
 };
