@@ -1,6 +1,8 @@
 #include "string.hpp"
 #include "list.hpp"
 #include "dictionary.hpp"
+#include "matrix.hpp"
+
 #include <iostream>
 
 bool bigger(int a, int b)
@@ -10,14 +12,26 @@ bool bigger(int a, int b)
 
 void run()
 {
-    Dictionary<int, double> dict;
-    dict.Add(1, 2.4);
-    dict.Add(10, 5.6);
-    dict.Add(255, 104.9);
+    Matrix<2,2> mx1;
 
-    dict[255] = 99.99;
+    mx1[0][0] = 1;
+    mx1[0][1] = 2;
+    mx1[1][0] = 3;
+    mx1[1][1] = 4;
 
-    dict.Print();
+    mx1.Print();
+
+    
+    Matrix<2,2> mx2;
+
+    mx2[0][0] = 1;
+    mx2[0][1] = 2;
+    mx2[1][0] = 3;
+    mx2[1][1] = 4;
+
+    mx2.Print();
+
+    (mx1*mx2).Print();
 }
 
 int main()
