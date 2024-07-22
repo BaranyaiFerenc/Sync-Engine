@@ -12,30 +12,25 @@ bool bigger(int a, int b)
 
 void run()
 {
-    Matrix mx1(2,2);
-
-    mx1[0][0] = 1;
-    mx1[0][1] = 2;
-    mx1[1][0] = 3;
-    mx1[1][1] = 4;
-
-
     
-    Matrix mx2(2,2);
-
-    mx2[0][0] = 1;
-    mx2[0][1] = 2;
-    mx2[1][0] = 3;
-    mx2[1][1] = 4;
 
 
+    int x = 100;
+    int y = 100;
 
-    mx2.Print(true);
-    
-    mx1.Print();
+    Matrix mx1(x,y);
+    Matrix mx2(x,y);
 
-    Matrix result= (mx1*mx2);
-    result.Print();
+    for(int i = 0; i<x; i++)
+    {
+        for(int k = 0; k<y; k++)
+        {
+            mx1[i][k] = i*x+k;
+            mx2[i][k] = i*x+k;
+        }
+    }
+
+    mx1.PrintMultiplication(mx2);
 }
 
 int main()

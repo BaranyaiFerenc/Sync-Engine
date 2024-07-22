@@ -10,7 +10,7 @@ class Matrix
 
     int rows, cols;
 
-    double Multiplier(double* m1, double* m2)
+    double Multiplier(double* m1, double* m2) const 
     {
         double result = 0;
         for(int i = 0; i<cols; i++)
@@ -21,7 +21,7 @@ class Matrix
         return result;
     }
 
-    double* GetColumn(unsigned int index)
+    double* GetColumn(unsigned int index) const 
     {
         double* col = new double[rows];
         for(int i = 0; i<rows; i++)
@@ -106,7 +106,7 @@ public:
 
 
 
-    Matrix operator*(Matrix mx)
+    Matrix operator*(const Matrix mx) const
     {
         Matrix result(rows, mx.ColumnCount());
 
@@ -134,6 +134,30 @@ public:
             for(int c = 0; c<cols; c++)
             {
                 std::cout<<"["<<data[r][c]<<"]";
+            }
+            std::cout<<std::endl;
+        }
+    }
+
+    void PrintMultiplication(const Matrix& mx) const
+    {
+        Matrix result = *this*mx;
+
+        mx.Print(true);
+        std::cout<<std::endl;
+
+        for(int i = 0; i<rows; i++)
+        {
+            for(int k = 0; k<cols; k++)
+            {
+                std::cout<<"["<<data[i][k]<<"]";
+            }
+
+            std::cout<<"  ";
+            
+            for(int k = 0; k<result.ColumnCount(); k++)
+            {
+                std::cout<<"["<<result[i][k]<<"]";
             }
             std::cout<<std::endl;
         }
