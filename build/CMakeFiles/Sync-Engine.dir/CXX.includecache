@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/workspaces/Sync-Engine/dictionary.hpp
+iostream
+-
+
+/workspaces/Sync-Engine/list.hpp
+iostream
+-
+
+/workspaces/Sync-Engine/main.cpp
+string.hpp
+/workspaces/Sync-Engine/string.hpp
+list.hpp
+/workspaces/Sync-Engine/list.hpp
+dictionary.hpp
+/workspaces/Sync-Engine/dictionary.hpp
+matrix.hpp
+/workspaces/Sync-Engine/matrix.hpp
+iostream
+-
+
+/workspaces/Sync-Engine/matrix.hpp
+list.hpp
+/workspaces/Sync-Engine/list.hpp
+iostream
+-
+
+/workspaces/Sync-Engine/string.hpp
+list.hpp
+/workspaces/Sync-Engine/list.hpp
+iostream
+-
+

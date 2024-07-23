@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Sync-Engine.dir/main.cpp.o  -o Sync-Engine 

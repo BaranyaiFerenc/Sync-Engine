@@ -1,0 +1,6 @@
+/workspaces/Sync-Engine/build/CMakeFiles/edit_cache.dir
+/workspaces/Sync-Engine/build/CMakeFiles/test.dir
+/workspaces/Sync-Engine/build/CMakeFiles/package_source.dir
+/workspaces/Sync-Engine/build/CMakeFiles/rebuild_cache.dir
+/workspaces/Sync-Engine/build/CMakeFiles/package.dir
+/workspaces/Sync-Engine/build/CMakeFiles/Sync-Engine.dir

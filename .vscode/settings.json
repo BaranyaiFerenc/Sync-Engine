@@ -45,9 +45,5 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "list": "cpp",
-
-        "cmake.cmakePath": "/path/to/cmake"
-    },
-    "cmake.sourceDirectory": "/workspaces/Sync-Engine",
-    "cmake.ignoreCMakeListsMissing": true
+    }
 }
