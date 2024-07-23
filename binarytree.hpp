@@ -20,7 +20,7 @@ public:
 
     void Add()
     {
-
+        std::cout<<"Add";
     }
 
 };
