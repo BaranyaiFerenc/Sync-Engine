@@ -15,8 +15,8 @@ void run()
     
 
 
-    int x = 100;
-    int y = 100;
+    int x = 2;
+    int y = 2;
 
     Matrix mx1(x,y);
     Matrix mx2(x,y);

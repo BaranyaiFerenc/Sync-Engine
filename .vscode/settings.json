@@ -44,6 +44,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+
+        "cmake.cmakePath": "/path/to/cmake"
     }
 }
