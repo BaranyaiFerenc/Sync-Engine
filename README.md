@@ -3,10 +3,10 @@
 
 ## Dependencies
 The code uses basic libraries like:
--'iostream': input and output
--'time': timing and logging
+-`iostream`: input and output
+-`time`: timing and logging
 
-The code also uses the 'SFML' graphic library for the window and display
+The code also uses the `SFML` graphic library for the window and display
 
 
 ## Basic files
