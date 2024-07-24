@@ -1,0 +1,2 @@
+[Error][2024.07.24-07:37] main.cpp - Hello World!
+[Error][2024.07.24-07:39] main.cpp - Hello World!

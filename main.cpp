@@ -2,8 +2,10 @@
 #include "list.hpp"
 #include "dictionary.hpp"
 #include "matrix.hpp"
+#include "logger.hpp"
 
 #include <iostream>
+#include <fstream>
 
 bool bigger(int a, int b)
 {
@@ -12,25 +14,12 @@ bool bigger(int a, int b)
 
 void run()
 {
-    
+    std::ofstream file("output.txt", std::ios_base::app);
+    Logger logger = Logger(file, "main.cpp");
 
 
-    int x = 2;
-    int y = 2;
-
-    Matrix mx1(x,y);
-    Matrix mx2(x,y);
-
-    for(int i = 0; i<x; i++)
-    {
-        for(int k = 0; k<y; k++)
-        {
-            mx1[i][k] = i*x+k;
-            mx2[i][k] = i*x+k;
-        }
-    }
-
-    mx1.PrintMultiplication(mx2);
+    logger.ConsoleLog("Hello World!", Logger::Error);
+    file.close();
 }
 
 int main()
