@@ -6,12 +6,30 @@
 
 #IncludeRegexTransform: 
 
+/workspaces/Sync-Engine/camera.hpp
+vector.h
+/workspaces/Sync-Engine/vector.h
+matrix.hpp
+/workspaces/Sync-Engine/matrix.hpp
+list.hpp
+/workspaces/Sync-Engine/list.hpp
+iostream
+-
+
 /workspaces/Sync-Engine/dictionary.hpp
 iostream
 -
 
 /workspaces/Sync-Engine/list.hpp
 iostream
+-
+
+/workspaces/Sync-Engine/logger.hpp
+iostream
+-
+time.h
+-
+chrono
 -
 
 /workspaces/Sync-Engine/main.cpp
@@ -23,7 +41,15 @@ dictionary.hpp
 /workspaces/Sync-Engine/dictionary.hpp
 matrix.hpp
 /workspaces/Sync-Engine/matrix.hpp
+logger.hpp
+/workspaces/Sync-Engine/logger.hpp
+vector.h
+/workspaces/Sync-Engine/vector.h
+camera.hpp
+/workspaces/Sync-Engine/camera.hpp
 iostream
+-
+fstream
 -
 
 /workspaces/Sync-Engine/matrix.hpp
@@ -36,5 +62,11 @@ iostream
 list.hpp
 /workspaces/Sync-Engine/list.hpp
 iostream
+-
+
+/workspaces/Sync-Engine/vector.h
+iostream
+-
+cmath
 -
 

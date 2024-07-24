@@ -3,6 +3,8 @@
 #include "dictionary.hpp"
 #include "matrix.hpp"
 #include "logger.hpp"
+#include "vector.h"
+#include "camera.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -14,12 +16,15 @@ bool bigger(int a, int b)
 
 void run()
 {
-    std::ofstream file("output.txt", std::ios_base::app);
-    Logger logger = Logger(file, "main.cpp");
+    Camera cam;
+    cam.position = Vector(10,0,0);
+    cam.rotation = Rotation(0,0,0);
+    cam.focalLength = 50;
+    cam.sensorSize = 10;
+    cam.resulotion = Vector(1920,1080);
+    cam.skew = 1;
 
-
-    logger.ConsoleLog("Hello World!", Logger::Error);
-    file.close();
+    cam.PrintMatrix();
 }
 
 int main()

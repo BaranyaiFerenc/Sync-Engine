@@ -5,7 +5,6 @@
 #include <iostream>
 #include <cmath>
 
-#include "../logger.hpp"
 
 class Vector
 {

@@ -9,7 +9,7 @@ class Logger
 {
 
     std::ostream& output;
-    char* source;
+    String source;
 
 public:
 
@@ -55,7 +55,13 @@ private:
 
 public:
 
-    Logger(std::ostream& os = std::cout, char* src = ""):output(os), source(src){}
+    Logger(std::ostream& os = std::cout, const char* src = ""):output(os)
+    {
+        for(int i = 0; src[i] != '\0'; i++)
+        {
+            source+=src[i];
+        }
+    }
 
 
     void ConsoleLog(char* msg, Level lvl = Log)
