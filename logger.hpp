@@ -5,6 +5,8 @@
 #include <time.h>
 #include <chrono>
 
+#include "string.hpp"
+
 class Logger
 {
 

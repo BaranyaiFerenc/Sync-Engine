@@ -80,17 +80,17 @@ Face::~Face()
 }
 
 int Face::operator[](unsigned int idx) const
-{
+{/*
     if(idx < 0 || idx >= size)
-        Logger::Log("Out of range - Face::operator[]()", Logger::error);
+        Logger::Log("Out of range - Face::operator[]()", Logger::error);*/
 
     return vertexIDs[idx];
 }
 
 int& Face::operator[](unsigned int idx)
-{
+{/*
     if(idx < 0 || idx >= size)
-        Logger::Log("Out of range - Face::operator[]()", Logger::error);
+        Logger::Log("Out of range - Face::operator[]()", Logger::error);*/
 
     return vertexIDs[idx];
 }

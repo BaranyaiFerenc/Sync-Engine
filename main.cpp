@@ -2,7 +2,6 @@
 #include "list.hpp"
 #include "dictionary.hpp"
 #include "matrix.hpp"
-#include "logger.hpp"
 #include "vector.h"
 #include "camera.hpp"
 
