@@ -1,3 +1,5 @@
+
+/*
 #include "vector.h"
 
 Vector Vector::operator+(const Vector& v) const
@@ -20,11 +22,13 @@ Vector Vector::operator*(const Vector& v) const
     return Vector(x * v.x, y * v.y, z * v.z);
 }
 
-void Vector::operator=(Vector v)
+Vector& Vector::operator=(const Vector& v)
 {
     x = v.x;
     y = v.y;
     z = v.z;
+
+    return *this;
 }
 
 void Vector::operator+=(const Vector& v)
@@ -78,18 +82,12 @@ Face::~Face()
 }
 
 int Face::operator[](unsigned int idx) const
-{/*
-    if(idx < 0 || idx >= size)
-        Logger::Log("Out of range - Face::operator[]()", Logger::error);*/
-
+{
     return vertexIDs[idx];
 }
 
 int& Face::operator[](unsigned int idx)
-{/*
-    if(idx < 0 || idx >= size)
-        Logger::Log("Out of range - Face::operator[]()", Logger::error);*/
-
+{
     return vertexIDs[idx];
 }
 
@@ -105,4 +103,4 @@ std::ostream& operator<<(std::ostream& os, const Face& face)
     }
 
     return os;
-}
+}*/

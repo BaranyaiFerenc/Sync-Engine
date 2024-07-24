@@ -2,7 +2,7 @@
 #include "list.hpp"
 #include "dictionary.hpp"
 #include "matrix.hpp"
-#include "vector.h"
+#include "vector.hpp"
 #include "camera.hpp"
 
 #include <iostream>
@@ -16,26 +16,13 @@ bool bigger(int a, int b)
 void run()
 {
     Camera cam;
-    //cam.position = Vector(10,0,0);
-    cam.position.x = -10;
-    cam.position.y = 0;
-    cam.position.z = 0;
-    
-    //cam.rotation = Rotation(0,0,0);
-    cam.rotation.x = 0;
-    cam.rotation.y = 0;
-    cam.rotation.z = 0;
-
+    cam.position = Vector(-10,0,0);
+    cam.rotation = Rotation(0,0,0);
     cam.focalLength = 10;
+    cam.sensorSize = Vector(20,20);
+    cam.resulotion = Vector(100,100);
 
-    cam.sensorSize.x = 200;
-    cam.sensorSize.y = 200;
-
-    //cam.resulotion = Vector(1920,1080);
-    cam.resulotion.x = 1000;
-    cam.resulotion.y = 1000;
-
-    cam.skew = 1;
+    cam.skew = 2;
 
 
     List<Vector> vectorList;
@@ -53,11 +40,11 @@ void run()
 
     std::fstream file("out.svg");
 
-    file<<"<svg height=\"1000\" width=\"1000\" xmlns=\"http://www.w3.org/2000/svg\">";
+    file<<"<svg height=\"100\" width=\"100\" xmlns=\"http://www.w3.org/2000/svg\">\n";
 
     for(int i = 0; i<vectorList.Size(); i++)
     {
-        file<<"\t<circle r=\"45\" cx=\""<<vectorList[i].x<<"\" cy=\""<<vectorList[i].y<<"\" fill=\"red\" />";
+        file<<"\t<circle r=\"2\" cx=\""<<vectorList[i].x*-1<<"\" cy=\""<<vectorList[i].y*-1<<"\" fill=\"red\" />\n";
     }
 
     file<<"</svg>";

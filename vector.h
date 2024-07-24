@@ -1,6 +1,7 @@
-#ifndef PRINTER_VECTOR_H
-#define PRINTER_VECTOR_H
 
+/*
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <iostream>
 #include <cmath>
@@ -23,7 +24,7 @@ public:
 
     Vector operator*(const Vector& v) const;
 
-    void operator=(Vector v);
+    Vector& operator=(const Vector& v);
 
     void operator+=(const Vector& v);
 
@@ -64,5 +65,5 @@ public:
 };
 
 
-
-#endif //PRINTER_VECTOR_H
+*/
+//#endif //PRINTER_VECTOR_H
