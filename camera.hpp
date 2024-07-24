@@ -73,6 +73,18 @@ public:
     {
         CreateProjectionMatrix().Print();
     }
+
+    Vector CalculateScreenPoints(const Vector p) const
+    {
+        Matrix pointMatrix(4,1);
+        pointMatrix[0][0] = p.x;
+        pointMatrix[1][0] = p.y;
+        pointMatrix[2][0] = p.z;
+        pointMatrix[3][0] = 1;
+
+        Matrix newMx = (CreateProjectionMatrix()*pointMatrix);
+        return Vector(newMx[0][0],newMx[1][0],newMx[2][0]);
+    }
 };
 
 #endif

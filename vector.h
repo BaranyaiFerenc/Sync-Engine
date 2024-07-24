@@ -23,7 +23,7 @@ public:
 
     Vector operator*(const Vector& v) const;
 
-    void operator=(const Vector& v);
+    void operator=(Vector v);
 
     void operator+=(const Vector& v);
 

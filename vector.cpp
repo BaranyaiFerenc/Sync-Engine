@@ -20,13 +20,11 @@ Vector Vector::operator*(const Vector& v) const
     return Vector(x * v.x, y * v.y, z * v.z);
 }
 
-void Vector::operator=(const Vector& v)
+void Vector::operator=(Vector v)
 {
-    if (this != &v) {
-        x = v.x;
-        y = v.y;
-        z = v.z;
-    }
+    x = v.x;
+    y = v.y;
+    z = v.z;
 }
 
 void Vector::operator+=(const Vector& v)

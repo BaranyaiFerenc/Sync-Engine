@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/workspaces/Sync-Engine/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/Sync-Engine.dir/main.cpp.o -c /workspaces/Sync-Engine/main.cpp",
+  "file": "/workspaces/Sync-Engine/main.cpp"
+}
+]
