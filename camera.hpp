@@ -1,7 +1,7 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
-#include "vector.h"
+#include "vector.hpp"
 #include "matrix.hpp"
 #include "list.hpp"
 
@@ -41,10 +41,10 @@ public:
         Matrix mx3(4,4);
         mx3[0][0] = cos(rotation.y);
         mx3[0][1] = sin(rotation.y);
-        mx3[1][2] = 1;
+        mx3[1][1] = 1;
         mx3[2][0] = -sin(rotation.y);
         mx3[2][1] = cos(rotation.y);
-        mx3[2][3] = 1;
+        mx3[2][2] = 1;
         mx3[3][3] = 1;
 
         Matrix mx4(4,4);
@@ -61,7 +61,7 @@ public:
         mx5[1][1] = 1;
         mx5[1][3] = -position.y;
         mx5[2][2] = 1;
-        mx5[2][3] = -position.y;
+        mx5[2][3] = -position.z;
         mx5[3][3] = 1;
 
 
@@ -83,7 +83,16 @@ public:
         pointMatrix[3][0] = 1;
 
         Matrix newMx = (CreateProjectionMatrix()*pointMatrix);
-        return Vector(newMx[0][0],newMx[1][0],newMx[2][0]);
+
+        Matrix perspectiveMatrix(4,4);
+        perspectiveMatrix[0][0] = 1/newMx[2][0];
+        perspectiveMatrix[1][1] = 1/newMx[2][0];
+        perspectiveMatrix[2][2] = 1;
+        perspectiveMatrix[2][2] = 1;
+
+        Matrix result = perspectiveMatrix*newMx;
+
+        return Vector(result[0][0],result[1][0],result[2][0]);
     }
 };
 

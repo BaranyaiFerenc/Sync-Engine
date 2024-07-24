@@ -110,9 +110,9 @@ public:
     {
         Matrix result(rows, mx.ColumnCount());
 
-        for(int r = 0; r < rows; r++)
+        for(unsigned int r = 0; r < rows; r++)
         {
-            for(int c = 0; c < mx.ColumnCount(); c++)
+            for(unsigned int c = 0; c < mx.ColumnCount(); c++)
             {
                 double* col = mx.GetColumn(c);
                 result[r][c] = Multiplier(data[r], col);
@@ -146,16 +146,16 @@ public:
         mx.Print(true);
         std::cout<<std::endl;
 
-        for(int i = 0; i<rows; i++)
+        for(unsigned int i = 0; i<rows; i++)
         {
-            for(int k = 0; k<cols; k++)
+            for(unsigned int k = 0; k<cols; k++)
             {
                 std::cout<<"["<<data[i][k]<<"]";
             }
 
             std::cout<<"  ";
             
-            for(int k = 0; k<result.ColumnCount(); k++)
+            for(unsigned int k = 0; k<result.ColumnCount(); k++)
             {
                 std::cout<<"["<<result[i][k]<<"]";
             }
