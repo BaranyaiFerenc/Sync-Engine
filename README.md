@@ -1,5 +1,5 @@
 ## Sync-Engine
-3D engine that provides fast 3D rendering with low resulotion
+3D engine that provides fast 3D rendering with lowpoly graphics, ideal for old PS2 like games.
 
 ## Dependencies
 The code uses basic libraries like:
