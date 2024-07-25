@@ -4,36 +4,29 @@
 #include "matrix.hpp"
 #include "vector.hpp"
 #include "camera.hpp"
+#include "logger.hpp"
 
 #include <iostream>
 #include <fstream>
 
-bool bigger(int a, int b)
-{
-    return a < b;
-}
-
-unsigned long createRGB(int r, int g, int b)
-{   
-    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
-}
-
 void run()
 {
-    double sensor = 1;
+    double sensor = 47;
 
 
     Camera cam;
-    cam.position = Vector(1000000,0,0);
+    cam.position = Vector(3,1,5);
     cam.rotation = Rotation(0,0,0);
     cam.sensorSize = Vector(2*sensor,sensor);
     cam.resulotion = Vector(1400,700);
-    cam.focalLength = 1;
+    cam.focalLength = 66;
+
+    cam.PrintMatrix();
 
     List<Vector> vectorList;
     List<List<int>> faceList;
 
-    std::fstream input("sample/Apple.obj");
+    std::fstream input("C:\\Users\\Baranyai Ferenc\\Desktop\\Sync-Engine\\sample\\Donuts.obj");
 
     char array[256];
     int n = 256;
@@ -46,11 +39,11 @@ void run()
         {
             List<String> list = line.Split(' ');
 
-            char* x_char = list[2].toCharArray();
-            char* y_char = list[3].toCharArray();
-            char* z_char = list[4].toCharArray();
+            char* x_char = list[1].toCharArray();
+            char* y_char = list[2].toCharArray();
+            char* z_char = list[3].toCharArray();
 
-            vectorList.Add(Vector(atof(x_char)+2400,atof(y_char)+400,atof(z_char)));
+            vectorList.Add(cam.CalculateScreenPoints(Vector(atof(x_char),atof(y_char),atof(z_char))));
 
             delete[] x_char;
             delete[] y_char;
@@ -61,7 +54,7 @@ void run()
             List<String> list = line.Split(' ');
             List<int> faces;
 
-            for(int i = 2; i<list.Size(); i++)
+            for(int i = 1; i<list.Size(); i++)
             {
                 char* num = list[i].Split('/')[0].GetText();
                 faces.Add(atoi(num));
@@ -74,7 +67,10 @@ void run()
 
     input.close();
 
-    std::fstream file("out1.svg", std::ios::out | std::ios::trunc);
+    double offset_x = 500;
+    double offset_y = 300;
+
+    std::fstream file("C:\\Users\\Baranyai Ferenc\\Desktop\\Sync-Engine\\sample\\out.svg", std::ios::out | std::ios::trunc);
 
     file<<"<svg height=\"900\" width=\"1600\" xmlns=\"http://www.w3.org/2000/svg\">\n";
 
@@ -83,7 +79,7 @@ void run()
         file<<"\t<polygon points=\"";
         for(int y = 0; y<faceList[x].Size();y++)
         {
-            file<<vectorList[faceList[x][y]-1].x<<","<<vectorList[faceList[x][y]-1].y<<" ";
+            file<<vectorList[faceList[x][y]-1].x+offset_x<<","<<vectorList[faceList[x][y]-1].y+offset_y<<" ";
         }
 
         file<<"\" style=\"stroke:"<<"black"<<";stroke-width:3\" fill-opacity=\"0.1\"/>\n";
@@ -105,7 +101,8 @@ void run()
 
     for(int i = 0; i<vectorList.Size(); i++)
     {
-        file<<"\t<circle r=\"3\" cx=\""<<vectorList[i].x<<"\" cy=\""<<vectorList[i].y<<"\" fill=\"#D900FF\" />\n";
+        if(false)
+            file<<"\t<circle r=\"3\" cx=\""<<vectorList[i].x+offset_x<<"\" cy=\""<<vectorList[i].y+offset_y<<"\" fill=\"#D900FF\" />\n";
     }
     
 
@@ -113,7 +110,9 @@ void run()
 
     file.close();
 
-    std::cout<<"Done!!!!!";
+    Logger logger(std::cout, "main.cpp");
+
+    logger.ConsoleLog("Done");
 }
 
 int main()
