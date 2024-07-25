@@ -105,6 +105,13 @@ public:
     }
 
 
+    void SetDiagonal(double value = 1)
+    {
+        for(int x = 0; x<RowCount(); x++)
+        {
+            data[x][x] = value;
+        }
+    }
 
     Matrix operator*(const Matrix mx) const
     {

@@ -18,7 +18,10 @@ public:
 
     String(char* str)
     {
-        *this = str;
+        for(int i = 0; str[i] != '\0'; i++)
+        {
+            data.Add(str[i]);
+        }
     }
 
     char* GetText() const
@@ -40,21 +43,35 @@ public:
         return data.Size();
     }
 
+    char* toCharArray()
+    {
+        char* result = new char[data.Size()+1];
+        for(int i = 0; i<data.Size(); i++)
+        {
+            result[i] = data[i];
+        }
+        result[data.Size()] = '\0';
+        return result;
+    }
+
 
     void operator=(char c)
     {
-        data.Clear();
+        if(data.Size() > 0)
+            data.Clear();
         data.Add(c);
     }
     void operator=(String str)
     {
-        data.Clear();
+        if(data.Size() > 0)
+            data.Clear();
         data = str.data;
     }
 
     void operator=(char* str)
     {
-        data.Clear();
+        if(data.Size() > 0)
+            data.Clear();
 
         for(int i = 0; str[i] != '\0'; i++)
         {

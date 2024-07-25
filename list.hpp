@@ -49,6 +49,8 @@ public:
         {
             this->Add(elements[i]);
         }
+
+        size+=n;
     }
 
     void Add(List<T> list)
@@ -57,6 +59,8 @@ public:
         {
             this->Add(list[i]);
         }
+
+        size+=list.size;
     }
 
     void RemoveAt(unsigned int index)
@@ -219,11 +223,12 @@ public:
 
     
     ~List()
-    {
+    {/*
         for(Element* e = firstElement;  e != 0; e = e->after)
         {
-            delete e;
-        }
+            if(e != nullptr)
+                delete e;
+        }*/
     }
 
 };

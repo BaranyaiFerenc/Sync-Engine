@@ -13,15 +13,13 @@ public:
     Vector position;
     Rotation rotation;
 
-
     Vector resulotion;
     Vector sensorSize;
     double focalLength;
     double skew;
 
-
     Matrix CreateProjectionMatrix() const
-    {
+    { 
         Matrix mx1(4,4);
         mx1[0][0] = (focalLength*resulotion.x)/(2*sensorSize.x);
         mx1[0][1] = skew;
@@ -76,23 +74,18 @@ public:
 
     Vector CalculateScreenPoints(const Vector p) const
     {
+
+        Matrix projectionMatrix = CreateProjectionMatrix();
+
         Matrix pointMatrix(4,1);
         pointMatrix[0][0] = p.x;
         pointMatrix[1][0] = p.y;
         pointMatrix[2][0] = p.z;
         pointMatrix[3][0] = 1;
 
-        Matrix newMx = (CreateProjectionMatrix()*pointMatrix);
+        Matrix result = (projectionMatrix*pointMatrix);
 
-        Matrix perspectiveMatrix(4,4);
-        perspectiveMatrix[0][0] = 1/newMx[2][0];
-        perspectiveMatrix[1][1] = 1/newMx[2][0];
-        perspectiveMatrix[2][2] = 1;
-        perspectiveMatrix[2][2] = 1;
-
-        Matrix result = perspectiveMatrix*newMx;
-
-        return Vector(result[0][0],result[1][0],result[2][0]);
+        return Vector(result[0][0]/result[2][0],result[1][0]/result[2][0],result[2][0]);
     }
 };
 
