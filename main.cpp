@@ -39,6 +39,7 @@ void run()
     std::cout<<cam.GetScreenPoint(Vector(5,1,10));
 
     Object obj = Import::ImportObj("sample/Cube.obj");
+    obj.mesh.vertices.Print();
 
     SvgCreator svg("outdraw.svg");
     svg.DrawSVG(obj, cam);

@@ -63,6 +63,7 @@ public:
         List<Vector> pointList;
         for(int i = 0; i<obj.mesh.vertices.Size(); i++)
         {
+            std::cout<<i<<std::endl;
             Vector actual = obj.mesh.vertices[i];
             pointList.Add(actual);
         }

@@ -94,7 +94,8 @@ public:
 
     void operator+=(String str)
     {
-        data.Add(str.data);
+        char* text = str.GetText();
+        data.Add(text, str.Length());
     }
     
 

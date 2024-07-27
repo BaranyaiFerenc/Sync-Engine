@@ -37,6 +37,8 @@ public:
         Element* newElement = new Element();
         newElement->value = element;
 
+        std::cout<<" added to list"<<std::endl;
+
         Element* lastElement = End();
 
         newElement->before = lastElement;
@@ -53,15 +55,6 @@ public:
         size+=n;
     }
 
-    void Add(List<T> list)
-    {
-        for(int i = 0; i<list.size; i++)
-        {
-            this->Add(list[i]);
-        }
-
-        size+=list.size;
-    }
 
     void RemoveAt(unsigned int index)
     {
