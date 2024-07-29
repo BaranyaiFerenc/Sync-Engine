@@ -46,7 +46,7 @@ public:
 
     Vector GetVertex(unsigned int index) const
     {
-        Vector vert = mesh.vertices[index];
+        Vector vert = mesh.vertices[index]+position;
         vert = vert.Rotate(rotation);
         vert = vert*scale;
         return vert;

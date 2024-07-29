@@ -31,6 +31,7 @@ public:
         length = array.length;
 
         data = new T[capacity];
+        
 
         for(int i = 0; i<array.length; i++)
         {
@@ -88,6 +89,11 @@ public:
             throw "Out of array - DinArray";
 
         return data[index];
+    }
+
+    ~DinArray()
+    {
+        //delete[] data;
     }
 };
 

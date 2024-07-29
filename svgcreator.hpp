@@ -15,7 +15,7 @@ class SvgCreator
 
 public:
 
-    SvgCreator(const char* path_, int width_ = 1600, int heigth_ = 900):path(path_), width(width_), heigth(heigth_){}
+    SvgCreator(String path_, int width_ = 1600, int heigth_ = 900):path(path_), width(width_), heigth(heigth_){}
 
     void DrawSVG(const Object& obj, BasicCamera& cam)
     {
@@ -24,7 +24,7 @@ public:
 
         std::fstream file(path.GetText(), std::ios::out | std::ios::trunc);
 
-        file<<"<svg height=\""<<heigth<<"\" width=\""<<width<<"\" xmlns=\"http://www.w3.org/2000/svg\">\n";
+        file<<"<svg height=\""<<heigth<<"\" width=\""<<width<<"\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background-color:white\">\n";
 
         DinArray<Vector> projectedPoints = cam.ProjectObject(obj);
 
