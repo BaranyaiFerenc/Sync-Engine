@@ -228,6 +228,11 @@ public:
         double convert = M_PI/180;
         return Vector(x*convert,y*convert, z*convert);
     }
+
+    void RotateY(double deg)
+    {
+        y += deg*(M_PI/180);
+    }
 };
 
 

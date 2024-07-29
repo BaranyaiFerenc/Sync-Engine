@@ -25,12 +25,16 @@ void run()
     cam.resulotion = Vector(1600,900);
     cam.rotation = Rotation(0,0,0);
 
-    Object obj = Import::ImportObj("sample/House.obj");
-    obj.transform.scale = Vector(0.0035,0.0035,0.0035);
-    obj.transform.rotation = Rotation(0,M_PI/4,0);
+    Object obj = Import::ImportObj("sample/Cube.obj");
+    obj.transform.scale = Vector(1,1,1);
+    obj.transform.rotation = Rotation(0,0,0);
 
-    SvgCreator svg("outdraw.svg");
-    svg.DrawSVG(obj, cam);
+    for(int i = 0; i<360; i+=10)
+    {
+        SvgCreator svg(("video/outdraw"+i.c_str()+".svg"));
+        svg.DrawSVG(obj, cam);
+        obj.transform.rotation.RotateY(10);
+    }
     
     Logger logger(std::cout, "main.cpp");
 
