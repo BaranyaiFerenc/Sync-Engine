@@ -3,6 +3,7 @@
 
 
 #include "object.hpp"
+#include "dinarray.hpp"
 #include "list.hpp"
 
 #include <iostream>
@@ -31,7 +32,7 @@ namespace Import
                 char* y_char = list[2].toCharArray();
                 char* z_char = list[3].toCharArray();
 
-                obj.mesh.vertices.Add(Vector(atof(x_char),atof(y_char),atof(z_char)));
+                obj.transform.mesh.vertices.Add(Vector(atof(x_char),atof(y_char),atof(z_char)));
 
                 delete[] x_char;
                 delete[] y_char;
@@ -40,7 +41,7 @@ namespace Import
             else if(line.Length() > 1 && line[0] == 'f' && line[1] == ' ')
             {
                 List<String> list = line.Split(' ');
-                List<int> faces;
+                DinArray<int> faces(600);
 
                 for(int i = 1; i<list.Size(); i++)
                 {
@@ -49,11 +50,13 @@ namespace Import
                     delete[] num;
                 }
 
-                obj.mesh.faces.Add(faces);
+                obj.transform.mesh.faces.Add(faces);
             }
         }
 
         input.close();
+
+        return obj;
     }
 };
 

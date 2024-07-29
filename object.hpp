@@ -14,7 +14,6 @@ public:
     String name;
     long int id;
     Transform transform;
-    Mesh mesh;
 };
 
 

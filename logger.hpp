@@ -66,7 +66,7 @@ public:
     }
 
 
-    void ConsoleLog(char* msg, Level lvl = Log)
+    void ConsoleLog(const char* msg, Level lvl = Log)
     {
         const char* t = getCurrentLocalTime();
         output<<"["<< ParseLevel(lvl) <<"]"<< "["<<t <<"] "<<source<<" - "<<msg<<std::endl;

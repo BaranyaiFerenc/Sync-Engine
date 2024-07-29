@@ -22,6 +22,15 @@ class List
 
 public:
 
+    List<T>(){};
+    List<T>(const List<T>& list)
+    {
+        for(int i = 0; i<list.size; i++)
+        {
+            Add(list[i]);
+        }
+    }
+
     void Add(T element)
     {
         size++;
@@ -36,8 +45,6 @@ public:
 
         Element* newElement = new Element();
         newElement->value = element;
-
-        std::cout<<" added to list"<<std::endl;
 
         Element* lastElement = End();
 
@@ -179,19 +186,13 @@ public:
         throw "Element not found";
     }
 
-    void operator=(List<T>& list)
+    void operator=(const List<T>& list)
     {
-        for(Element* e = firstElement;  e != 0; e = e->after)
-        {
-            delete e;
-        }
-
-        firstElement = 0;
-        size = 0;
+        Clear();
 
         for(int i = 0; i<list.size; i++)
         {
-            this->Add(list[i]);
+            Add(list[i]);
         }
     }
 
@@ -199,7 +200,7 @@ public:
     {
         for(int i = 0; i<list.size; i++)
         {
-            this->Add(list[i]);
+            Add(list[i]);
         }
     }
 
@@ -216,12 +217,11 @@ public:
 
     
     ~List()
-    {/*
+    {
         for(Element* e = firstElement;  e != 0; e = e->after)
         {
-            if(e != nullptr)
-                delete e;
-        }*/
+            delete e;
+        }
     }
 
 };

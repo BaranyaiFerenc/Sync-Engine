@@ -16,49 +16,85 @@
 
 void run()
 {
-    double sensor = 47;
-
-/*
-    Camera cam;
-    cam.position = Vector(3,1,5);
-    cam.rotation = Rotation(0,0,0);
-    cam.sensorSize = Vector(2*sensor,sensor);
-    cam.resulotion = Vector(1400,700);
-    cam.focalLength = 66;
-
-    cam.PrintMatrix();*/
 
     BasicCamera cam;
     cam.far = 5000;
     cam.near = 0.1;
-    cam.fov = 50;
-    cam.position = Vector(-4000,1000,3000);
+    cam.fov = 70;
+    cam.position = Vector(0,3,10);
     cam.resulotion = Vector(1600,900);
-    cam.rotation = Rotation(0,60,0);
+    cam.rotation = Rotation(0,0,0);
 
-    std::cout<<cam.GetScreenPoint(Vector(5,1,10));
-
-    Object obj = Import::ImportObj("sample/Cube.obj");
-    obj.mesh.vertices.Print();
+    Object obj = Import::ImportObj("sample/House.obj");
+    obj.transform.scale = Vector(0.0035,0.0035,0.0035);
+    obj.transform.rotation = Rotation(0,M_PI/4,0);
 
     SvgCreator svg("outdraw.svg");
     svg.DrawSVG(obj, cam);
     
     Logger logger(std::cout, "main.cpp");
 
-    logger.ConsoleLog("Done");
+    logger.ConsoleLog("Calculations are done");
 }
 
 #include "stopper.hpp"
+#include "dinarray.hpp"
+
+
+void DinTest()
+{
+    DinArray<int> lista;
+
+    int n = 600;
+    for(int i = 0; i<n; i++)
+    {
+        lista.Add(i);
+    }
+
+    
+    for(int i = 0; i<n; i++)
+        int a = lista[i];
+}
+
+void ListTest()
+{
+    List<int> lista;
+    int n = 600;
+
+    for(int i = 0; i<n; i++)
+    {
+        lista.Add(i);
+    }
+
+    for(int i = 0; i<n; i++)
+        int a = lista[i];
+}
 
 int main()
 {
-    Stopper stopper;
-    stopper.Set();
+    using std::chrono::high_resolution_clock;
+    using std::chrono::duration_cast;
+    using std::chrono::milliseconds;
 
-    run();
+    int testCount = 1;
 
-    std::cout<<"Time to render: "<<stopper.Stop();
+    std::fstream file("test_numbers.txt",std::ios::out | std::ios::trunc);
+
+    auto t1 = high_resolution_clock::now();
+
+    for(int i = 0; i < testCount; i++)
+    {
+        run();
+    }
+
+    auto t2 = high_resolution_clock::now();
+
+    // Calculate the elapsed time in milliseconds
+    auto ms_int = duration_cast<milliseconds>(t2 - t1).count();
+
+    std::cout << ms_int << std::endl;
+
+    file.close();
 
     return 0;
 }

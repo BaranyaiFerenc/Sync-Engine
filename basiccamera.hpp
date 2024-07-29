@@ -10,6 +10,19 @@
 
 class BasicCamera
 {
+
+    double focalLength;
+
+    double angle;
+
+    double right;
+    double left;
+    
+    double top;
+    double bottom;
+
+    double scaleFactor;
+
 public:
     double far,near;
     double fov;
@@ -18,6 +31,22 @@ public:
 
     Vector position;
     Rotation rotation;
+
+
+    void CalculateSettings()
+    {
+        focalLength = far-near;
+
+        angle = ((fov/2)*(M_PI/180));
+
+        right = focalLength/(cos(angle)/sin(angle));
+        left = -right;
+        
+        top = right/(resulotion.x / resulotion.y);
+        bottom = -top;
+
+        scaleFactor = resulotion.x/(right*2);
+    }
 
     Vector WorldToCamPosition(Vector worldPoint) const
     {
@@ -28,17 +57,12 @@ public:
 
 
 
-    Vector GetScreenPoint(const Vector& worldPoint) const
+    Vector GetScreenPoint(const Vector& worldPoint, bool settingUp = true)
     {
-        double focalLength = far-near;
-
-        double angle = ((fov/2)*(M_PI/180));
-
-        double right = focalLength/(cos(angle)/sin(angle));
-        double left = -right;
-        
-        double top = right/(resulotion.x / resulotion.y);
-        double bottom = -top;
+        if(settingUp)
+        {
+            CalculateSettings();
+        }
 
         //std::cout<<"Right: "<<right<<", Left: "<<left<<", Top: "<<top<<", Bottom"<<bottom<<std::endl;
 
@@ -51,20 +75,19 @@ public:
 
         //std::cout<<screenPoint<<std::endl;
 
-        double scaleFactor = resulotion.x/(right*2);
+        
         screenPoint.x = screenPoint.x * scaleFactor;
         screenPoint.y = screenPoint.y * scaleFactor;
 
         return screenPoint;
     }
 
-    List<Vector> ProjectObject(Object obj) const
+    DinArray<Vector> ProjectObject(Object obj)
     {
-        List<Vector> pointList;
-        for(int i = 0; i<obj.mesh.vertices.Size(); i++)
+        DinArray<Vector> pointList(600);
+        for(int i = 0; i<obj.transform.mesh.vertices.Length(); i++)
         {
-            std::cout<<i<<std::endl;
-            Vector actual = obj.mesh.vertices[i];
+            Vector actual = GetScreenPoint(obj.transform.GetVertex(i),(i==0));
             pointList.Add(actual);
         }
 
