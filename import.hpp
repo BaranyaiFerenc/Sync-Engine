@@ -11,14 +11,19 @@
 
 namespace Import
 {
-    Object ImportObj(const char* path)
+    DinArray<Object> ImportObj(const char* path)
     {
-        Object obj;
+        DinArray<Object> obj;
 
         std::fstream input(path);
 
         char array[256];
         int n = 256;
+
+        Object actual;
+
+        int vertexCounter = 0;
+        int toRemove = 0;
 
         while(input.getline(array,n))
         {
@@ -32,11 +37,13 @@ namespace Import
                 char* y_char = list[2].toCharArray();
                 char* z_char = list[3].toCharArray();
 
-                obj.transform.mesh.vertices.Add(Vector(atof(x_char),atof(y_char),atof(z_char)));
+                actual.transform.mesh.vertices.Add(Vector(atof(x_char),atof(y_char),atof(z_char)));
 
                 delete[] x_char;
                 delete[] y_char;
                 delete[] z_char;
+
+                vertexCounter++;
             }
             else if(line.Length() > 1 && line[0] == 'f' && line[1] == ' ')
             {
@@ -46,15 +53,33 @@ namespace Import
                 for(int i = 1; i<list.Size(); i++)
                 {
                     char* num = list[i].Split('/')[0].GetText();
-                    faces.Add(atoi(num)-1);
+                    faces.Add(atoi(num)-1-toRemove);
                     delete[] num;
                 }
 
-                obj.transform.mesh.faces.Add(faces);
+                actual.transform.mesh.faces.Add(faces);
+            }
+            else if(line.Length() > 1 && line[0] == 'o' && line[1] == ' ')
+            {
+                if(actual.name == "")
+                {
+                    actual = Object();
+                    actual.name = line.Split(' ')[1];
+                }
+                else
+                {
+                    actual.transform.CalculatePivot();
+                    obj.Add(actual);
+                    actual = Object();
+                    actual.name = line.Split(' ')[1];
+                    toRemove = vertexCounter;
+                }
             }
         }
 
         input.close();
+        actual.transform.CalculatePivot();
+        obj.Add(actual);
 
         return obj;
     }

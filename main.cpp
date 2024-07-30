@@ -25,21 +25,34 @@ void run()
     cam.resulotion = Vector(1600,900);
     cam.rotation = Rotation(0,0,0);
 
-    Object obj = Import::ImportObj("sample/Tank.obj");
-    obj.transform.scale = Vector(1,1,1);
-    obj.transform.rotation = Rotation(0,0,0);
+    DinArray<Object> obj = Import::ImportObj("sample/Donuts.obj");
+    std::cout<<"Object count: "<<obj.Length()<<std::endl;
+
+    obj[2].transform.position = Vector(-3,0,0);
+
+    for(int i = 0; i<obj.Length(); i++)
+    {
+        std::cout<<obj[i].name<<std::endl;
+        std::cout<<"\t"<<obj[i].transform.mesh.vertices.Length()<<std::endl;
+    }
+
+    //obj[0].transform.position = Vector(1,1,1);
 
     for(int i = 0; i<=360; i++)
     {
-        String path = "video/Cube/outdraw";
+        String path = "video/Donut/outdraw";
         path += std::to_string(i).c_str();
         path += ".svg";
 
         SvgCreator svg(path);
         svg.DrawSVG(obj, cam);
-        obj.transform.position.x -= 0.01;
-        obj.transform.rotation.RotateY(1);
+        
+        for(int k = 0; k<obj.Length(); k++)
+        {
+            obj[k].transform.rotation.Rotate(Vector(1,1,1));
+        }
     }
+
     
     Logger logger(std::cout, "main.cpp");
 

@@ -2,8 +2,8 @@ from cairosvg import svg2png
 import os
 import moviepy.video.io.ImageSequenceClip
 
-image_folder = 'png_files/Cube'
-max = 360
+image_folder = 'png_files/Donut'
+max = 86
 
 def makeVideo():
     print("Making video...")
@@ -17,11 +17,22 @@ def makeVideo():
     clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(image_files, fps=fps)
     clip.write_videofile('my_video.mp4')
 
+import os
 
-for i in range(0,max):
-    svg_code = open("video/Cube/outdraw"+str(i)+".svg").read()
-    svg2png(bytestring=svg_code,write_to=(image_folder+'/output'+str(i)+'.png'), background_color="white")
-    print("Picture #"+str(i)+"done")
-    print("["+(i+1)*"+"+(max-i-1)*"."+"]")
+def makePNG():
 
+    for i in range(0,max):
+        svg_code = open("video/Donut/outdraw"+str(i)+".svg").read()
+        try:
+            svg2png(bytestring=svg_code,write_to=(image_folder+'/output'+str(i)+'.png'), background_color="white")
+        except:
+            print("Wrong file structure, Picture #"+str(i))
+        else:
+            print("Picture #"+str(i)+"done")
+            print("["+(i+1)*"+"+(max-i-1)*"."+"]")
+
+
+_, _, files = next(os.walk("video/Donut"))
+max = len(files)
+makePNG()
 makeVideo()

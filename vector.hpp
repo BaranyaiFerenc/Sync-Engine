@@ -229,9 +229,11 @@ public:
         return Vector(x*convert,y*convert, z*convert);
     }
 
-    void RotateY(double deg)
+    void Rotate(Vector deg)
     {
-        y += deg*(M_PI/180);
+        x += deg.x*(M_PI/180);
+        y += deg.y*(M_PI/180);
+        z += deg.z*(M_PI/180);
     }
 };
 

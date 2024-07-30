@@ -1,8 +1,0 @@
-<svg height="900" width="1600" xmlns="http://www.w3.org/2000/svg" style="background-color:white">
-	<polygon points="334.365,512.597 268.905,482.841 433.946,469.677 518.627,495.006 " style="stroke:black;stroke-width:3" fill-opacity="0.1"/>
-	<polygon points="518.627,690.012 518.627,495.006 433.946,469.677 433.946,639.354 " style="stroke:black;stroke-width:3" fill-opacity="0.1"/>
-	<polygon points="433.946,639.354 433.946,469.677 268.905,482.841 268.905,665.682 " style="stroke:black;stroke-width:3" fill-opacity="0.1"/>
-	<polygon points="268.905,665.682 334.365,725.195 518.627,690.012 433.946,639.354 " style="stroke:black;stroke-width:3" fill-opacity="0.1"/>
-	<polygon points="334.365,725.195 334.365,512.597 518.627,495.006 518.627,690.012 " style="stroke:black;stroke-width:3" fill-opacity="0.1"/>
-	<polygon points="268.905,665.682 268.905,482.841 334.365,512.597 334.365,725.195 " style="stroke:black;stroke-width:3" fill-opacity="0.1"/>
-</svg>

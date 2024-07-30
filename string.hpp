@@ -97,6 +97,26 @@ public:
         char* text = str.GetText();
         data.Add(text, str.Length());
     }
+
+    bool operator==(const char* str) const
+    {
+        int len = 0;
+        for(int i = 0; str[i] != 0; i++)
+        {
+            len++;
+        }
+
+        if(len != Length())
+            return false;
+
+        for(int i = 0; i<Length(); i++)
+        {
+            if(data[i] != str[i])
+                return false;
+        }
+
+        return true;
+    }
     
 
     char operator[](unsigned int index) const

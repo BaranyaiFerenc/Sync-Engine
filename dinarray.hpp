@@ -24,7 +24,7 @@ public:
         data = new T[thr];
     }
 
-    DinArray(const DinArray& array)
+    DinArray(const DinArray<T>& array)
     {
         capacity = array.capacity;
         threshold = array.threshold;
@@ -53,7 +53,9 @@ public:
                 newData[i] = data[i];
             }
 
-            delete[] data;
+            if(length > 0)
+                delete[] data;
+
             data = newData;
         }
 
@@ -91,9 +93,31 @@ public:
         return data[index];
     }
 
+    void operator=(const DinArray<T>& array)
+    {
+        capacity = array.capacity;
+        threshold = array.threshold;
+        length = array.length;
+
+        if(length > 0)
+            delete[] data;
+            
+        data = new T[capacity];
+        
+
+        for(int i = 0; i<array.length; i++)
+        {
+            data[i] = array.data[i];
+        }
+    }
+
     ~DinArray()
     {
-        //delete[] data;
+        if (data != nullptr)
+        {
+            delete[] data;
+            data = nullptr; // Mark as deleted
+        }
     }
 };
 
