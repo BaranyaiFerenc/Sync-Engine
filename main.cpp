@@ -28,8 +28,6 @@ void run()
     DinArray<Object> obj = Import::ImportObj("sample/Donuts.obj");
     std::cout<<"Object count: "<<obj.Length()<<std::endl;
 
-    obj[2].transform.position = Vector(-3,0,0);
-
     for(int i = 0; i<obj.Length(); i++)
     {
         std::cout<<obj[i].name<<std::endl;
@@ -38,7 +36,7 @@ void run()
 
     //obj[0].transform.position = Vector(1,1,1);
 
-    for(int i = 0; i<=360; i++)
+    for(int i = 0; i<=0; i++)
     {
         String path = "video/Donut/outdraw";
         path += std::to_string(i).c_str();
