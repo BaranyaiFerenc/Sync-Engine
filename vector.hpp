@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include "matrix.hpp"
+#include "dinarray.hpp"
 
 
 class Vector
@@ -31,9 +32,9 @@ public:
         return Vector(x * d, y * d, z * d);
     }
 
-    Vector operator*(const Vector& v) const
+    double operator*(const Vector& v) const
     {
-        return Vector(x * v.x, y * v.y, z * v.z);
+        return x * v.x + y * v.y+z * v.z;
     }
 
     Vector& operator=(const Vector& v)
@@ -240,49 +241,59 @@ public:
 
 class Face
 {
-    int* vertexIDs;
-    size_t size;
+    DinArray<Vector> data;
 
 public:
-    Face():size(0){}
-    Face(int* ids, size_t n)
-    {
-        vertexIDs = new int[n];
 
-        for(size_t i = 0; i<n; i++)
-            vertexIDs[i] = ids[i];
+    void AddVector(const Vector& toAdd)
+    {
+        data.Add(toAdd);
     }
 
-    size_t getSize() const {return size;}
-
-    int operator[](unsigned int idx) const
+    Vector operator[](unsigned int index) const
     {
-        return vertexIDs[idx];
+        return data[index];
     }
 
-    int& operator[](unsigned int idx)
+    Vector& operator[](unsigned int index)
     {
-        return vertexIDs[idx];
+        return data[index];
     }
 
-    ~Face()
+    Vector GetNormal() const
     {
-        delete[] vertexIDs;
+        Vector a = data[1]-data[0];
+        Vector b = data[2]-data[0];
+
+        //double angle = ((a*b)/(a.Length()*b.Length()));
+
+        Vector normal;
+
+        normal.x = a.y*b.z-a.z*b.y;
+        normal.y = a.z*b.x-a.x*b.z;
+        normal.z = a.x*b.y-a.y*b.x;
+
+        return normal;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Face& face)
+    Vector GetPivot()
     {
-        os<<"(";
-        for(unsigned int i = 0; i<face.size; i++)
+        double sumX = 0;
+        double sumY = 0; 
+        double sumZ = 0;
+
+        int n = data.Length();
+
+        for(int i = 0; i<n; i++)
         {
-            if(i+1 != face.size)
-                os<<face[i]<<"/";
-            else
-                os<<face[i]<<")";
+            sumX += data[i].x;
+            sumY += data[i].y;
+            sumZ += data[i].z;
         }
 
-        return os;
+        return Vector(sumX/n, sumY/n, sumZ/n);
     }
+
 };
 
 

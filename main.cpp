@@ -25,7 +25,7 @@ void run()
     cam.resulotion = Vector(1600,900);
     cam.rotation = Rotation(0,0,0);
 
-    DinArray<Object> obj = Import::ImportObj("sample/Donuts.obj");
+    DinArray<Object> obj = Import::ImportObj("sample/Cube.obj");
     std::cout<<"Object count: "<<obj.Length()<<std::endl;
 
     for(int i = 0; i<obj.Length(); i++)
@@ -36,7 +36,7 @@ void run()
 
     //obj[0].transform.position = Vector(1,1,1);
 
-    for(int i = 0; i<=0; i++)
+    for(int i = 0; i<360; i++)
     {
         String path = "video/Donut/outdraw";
         path += std::to_string(i).c_str();
@@ -47,7 +47,7 @@ void run()
         
         for(int k = 0; k<obj.Length(); k++)
         {
-            obj[k].transform.rotation.Rotate(Vector(1,1,1));
+            obj[k].transform.rotation.Rotate(Vector(0,1,0));
         }
     }
 
@@ -115,6 +115,11 @@ int main()
     std::cout << ms_int << std::endl;
 
     file.close();
+
+    std::string filename = "main.py";
+    std::string command = "python ";
+    command += filename;
+    system(command.c_str());
 
     return 0;
 }

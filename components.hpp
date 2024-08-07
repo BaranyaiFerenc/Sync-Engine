@@ -49,7 +49,9 @@ public:
     {
         Vector vert = mesh.vertices[index]-pivot;
         vert = vert.Rotate(rotation);
-        vert = vert*scale;
+        vert.x = vert.x*scale.x;
+        vert.y = vert.y*scale.y;
+        vert.z = vert.z*scale.z;
         return (vert+position+pivot);
     }
 

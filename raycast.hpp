@@ -11,7 +11,7 @@
 
 namespace RayCast
 {
-    Vector RayCast(Vector source, Vector direction, )
+    Vector RayCast(Vector source, Vector direction, Object obstacle)
     {
 
     }
