@@ -21,7 +21,7 @@ void run()
     cam.far = 5000;
     cam.near = 0.1;
     cam.fov = 70;
-    cam.position = Vector(0,3,10);
+    cam.position = Vector(0,5,10);
     cam.resulotion = Vector(1600,900);
     cam.rotation = Rotation(0,0,0);
 
@@ -32,7 +32,7 @@ void run()
     {
         std::cout<<obj[i].name<<std::endl;
         std::cout<<"\t"<<obj[i].transform.mesh.vertices.Length()<<std::endl;
-        obj[i].transform.Rotate(Rotation(0,M_PI/5,0));
+        obj[i].transform.SetPosition(Vector(2,2,-2));
     }
 
     //obj[0].transform.position = Vector(1,1,1);

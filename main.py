@@ -10,9 +10,10 @@ def makeVideo():
     fps=30
     image_files = []
 
-    for i in range(0,max):
-        path = (image_folder+"/output"+str(i)+".png")
-        image_files.append(path)
+    for rep in range(0,3):
+        for i in range(0,max):
+            path = (image_folder+"/output"+str(i)+".png")
+            image_files.append(path)
 
     clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(image_files, fps=fps)
     clip.write_videofile('my_video.mp4')
