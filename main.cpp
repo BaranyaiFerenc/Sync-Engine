@@ -91,6 +91,8 @@ void ListTest()
         int a = lista[i];
 }
 
+#include "rgb.hpp"
+
 int main()
 {
     using std::chrono::high_resolution_clock;

@@ -5,6 +5,8 @@
 #include "object.hpp"
 #include "basiccamera.hpp"
 
+#include "rgb.hpp"
+
 #include <fstream>
 #include <iostream>
 
@@ -26,11 +28,18 @@ public:
 
         file<<"<svg height=\""<<heigth<<"\" width=\""<<width<<"\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background-color:white\">\n";
 
+    
+        Vector lightSource(-5,3,0);
+        Vector lightSourceCamPos = cam.GetScreenPoint(lightSource);
+
+        file<<"<circle r=\"30\" cx=\""<<lightSourceCamPos.x+offset_x<<"\" cy=\""<<lightSourceCamPos.y+offset_y<<"\" fill=\"yellow\" />\n";
+
         for(int i = 0; i<objArray.Length(); i++)
         {
             
             Object obj = objArray[i];
             DinArray<Vector> projectedPoints = cam.ProjectObject(obj);
+
 
             for(int i = 0; i<obj.transform.mesh.faces.Length(); i++)
             {
@@ -57,7 +66,15 @@ public:
                     file<<point.x+offset_x<<","<<point.y+offset_y<<" ";
                 }
 
-                file<<"\" style=\"stroke:"<<"black"<<";stroke-width:1\" fill-opacity=\"1\" fill=\"gray\"/>\n";
+                Vector faceNormal = obj.transform.mesh.GetFaceNormal(x);
+                Vector facePivot = obj.transform.mesh.GetFacePivot(x);
+                
+                Vector a = faceNormal-facePivot;
+                Vector b = lightSource-facePivot;
+
+                double rayAngle = a.GetAngle(b);
+
+                file<<"\" style=\"stroke:"<<"black"<<";stroke-width:1\" fill-opacity=\"1\" fill=\""<<RGB::rgbToHex(rayAngle*255,rayAngle*255,rayAngle*255)<<"\"/>\n";
             }
 
             for(int x = 0; x<obj.transform.mesh.faces.Length();x++)
@@ -67,6 +84,13 @@ public:
 
                 Vector facePivotCamSpace = cam.GetScreenPoint(facePivot);
                 Vector normalCamSpace = cam.GetScreenPoint(facePivot+normal.normalized());
+
+                Vector a = normal-facePivot;
+                Vector b = lightSource-facePivot;
+
+                double rayAngle = a.GetAngle(b);
+
+                file<<"<text x=\""<<facePivotCamSpace.x+offset_x<<"\" y=\""<<facePivotCamSpace.y+10+offset_y<<"\" fill=\"red\">"<<rayAngle<<"</text>\n";
 
                 file<<"<circle r=\"10\" cx=\""<<facePivotCamSpace.x+offset_x<<"\" cy=\""<<facePivotCamSpace.y+offset_y<<"\" fill=\"purple\" />\n";
                 file<<"<line x1=\""<<facePivotCamSpace.x+offset_x<<"\" y1=\""<<facePivotCamSpace.y+offset_y<<"\" x2=\""<<normalCamSpace.x+offset_x<<"\" y2=\""<<normalCamSpace.y+offset_y<<"\" style=\"stroke:purple;stroke-width:4\" />\n";
