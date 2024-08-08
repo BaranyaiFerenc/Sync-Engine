@@ -111,6 +111,24 @@ public:
         }
     }
 
+    
+    template<typename F>
+    void Sort(F func)
+    {
+        for(int i = 0; i<length; i++)
+        {
+            for(int k = 0; k<length-i-1; k++)
+            {
+                if(func(data[k], data[k+1]))  
+                {
+                    T buff = data[k];
+                    data[k] = data[k+1];
+                    data[k+1] = data[k];
+                }
+            }
+        }
+    }
+
     ~DinArray()
     {
         if (data != nullptr)

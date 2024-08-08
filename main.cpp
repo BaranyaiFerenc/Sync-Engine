@@ -32,6 +32,7 @@ void run()
     {
         std::cout<<obj[i].name<<std::endl;
         std::cout<<"\t"<<obj[i].transform.mesh.vertices.Length()<<std::endl;
+        obj[i].transform.Rotate(Rotation(0,M_PI/5,0));
     }
 
     //obj[0].transform.position = Vector(1,1,1);
@@ -47,7 +48,7 @@ void run()
         
         for(int k = 0; k<obj.Length(); k++)
         {
-            obj[k].transform.rotation.Rotate(Vector(0,1,0));
+            obj[k].transform.Rotate(Rotation(0,1*(M_PI/180),0));
         }
     }
 

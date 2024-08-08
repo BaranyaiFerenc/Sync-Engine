@@ -48,16 +48,16 @@ namespace Import
             else if(line.Length() > 1 && line[0] == 'f' && line[1] == ' ')
             {
                 List<String> list = line.Split(' ');
-                DinArray<int> faces(600);
+                Face face;
 
                 for(int i = 1; i<list.Size(); i++)
                 {
                     char* num = list[i].Split('/')[0].GetText();
-                    faces.Add(atoi(num)-1-toRemove);
+                    face.AddVector(atoi(num)-1-toRemove);
                     delete[] num;
                 }
 
-                actual.transform.mesh.faces.Add(faces);
+                actual.transform.mesh.faces.Add(face);
             }
             else if(line.Length() > 1 && line[0] == 'o' && line[1] == ' ')
             {
@@ -68,7 +68,7 @@ namespace Import
                 }
                 else
                 {
-                    actual.transform.CalculatePivot();
+                    actual.transform.Pivot();
                     obj.Add(actual);
                     actual = Object();
                     actual.name = line.Split(' ')[1];
@@ -78,7 +78,7 @@ namespace Import
         }
 
         input.close();
-        actual.transform.CalculatePivot();
+        actual.transform.Pivot();
         obj.Add(actual);
 
         return obj;

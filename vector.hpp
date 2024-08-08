@@ -89,6 +89,11 @@ public:
         return Vector(int(x), int(y), int(z));
     }
 
+    double GetAngle(const Vector& v) const
+    {
+        return ((*this*v)/(this->Length()*v.Length()));
+    }
+
     Vector RotateX(double rad)
     {
         Vector result(x,y,z);
@@ -239,62 +244,6 @@ public:
 };
 
 
-class Face
-{
-    DinArray<Vector> data;
-
-public:
-
-    void AddVector(const Vector& toAdd)
-    {
-        data.Add(toAdd);
-    }
-
-    Vector operator[](unsigned int index) const
-    {
-        return data[index];
-    }
-
-    Vector& operator[](unsigned int index)
-    {
-        return data[index];
-    }
-
-    Vector GetNormal() const
-    {
-        Vector a = data[1]-data[0];
-        Vector b = data[2]-data[0];
-
-        //double angle = ((a*b)/(a.Length()*b.Length()));
-
-        Vector normal;
-
-        normal.x = a.y*b.z-a.z*b.y;
-        normal.y = a.z*b.x-a.x*b.z;
-        normal.z = a.x*b.y-a.y*b.x;
-
-        return normal;
-    }
-
-    Vector GetPivot()
-    {
-        double sumX = 0;
-        double sumY = 0; 
-        double sumZ = 0;
-
-        int n = data.Length();
-
-        for(int i = 0; i<n; i++)
-        {
-            sumX += data[i].x;
-            sumY += data[i].y;
-            sumZ += data[i].z;
-        }
-
-        return Vector(sumX/n, sumY/n, sumZ/n);
-    }
-
-};
 
 
 
