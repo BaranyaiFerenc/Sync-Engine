@@ -18,12 +18,12 @@ void run()
 {
 
     BasicCamera cam;
-    cam.far = 5000;
+    cam.far = 1000;
     cam.near = 0.1;
     cam.fov = 70;
-    cam.position = Vector(0,5,10);
+    cam.position = Vector(0,5,20);
     cam.resulotion = Vector(1600,900);
-    cam.rotation = Rotation(0,0,0);
+    cam.rotation = Rotation(M_PI/4,0,0);
 
     DinArray<Object> obj = Import::ImportObj("sample/Cube.obj");
     std::cout<<"Object count: "<<obj.Length()<<std::endl;
@@ -32,12 +32,12 @@ void run()
     {
         std::cout<<obj[i].name<<std::endl;
         std::cout<<"\t"<<obj[i].transform.mesh.vertices.Length()<<std::endl;
-        obj[i].transform.SetPosition(Vector(2,2,-2));
+        obj[i].transform.SetPosition(Vector(0,0,0));
     }
 
     //obj[0].transform.position = Vector(1,1,1);
 
-    for(int i = 0; i<360; i++)
+    for(int i = 0; i<1; i++)
     {
         String path = "video/Donut/outdraw";
         path += std::to_string(i).c_str();

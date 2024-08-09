@@ -1,0 +1,93 @@
+<svg height="900" width="1600" xmlns="http://www.w3.org/2000/svg" style="background-color:gray">
+<line x1="167518" y1="83801.3" x2="788.572" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1379.42" y="729.072" fill="red">-10</text>
+<text x="810" y="634.376" fill="red">-10</text>
+<line x1="27408.4" y1="624.376" x2="-25808.4" y2="624.376" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="150846" y1="83801.3" x2="789.715" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1322.48" y="729.072" fill="red">-9</text>
+<text x="810" y="640.914" fill="red">-9</text>
+<line x1="28323.7" y1="630.914" x2="-26723.7" y2="630.914" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="134175" y1="83801.3" x2="790.857" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1265.53" y="729.072" fill="red">-8</text>
+<text x="810" y="647.918" fill="red">-8</text>
+<line x1="29304.3" y1="637.918" x2="-27704.3" y2="637.918" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="117503" y1="83801.3" x2="792" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1208.59" y="729.072" fill="red">-7</text>
+<text x="810" y="655.439" fill="red">-7</text>
+<line x1="30357.4" y1="645.439" x2="-28757.4" y2="645.439" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="100831" y1="83801.3" x2="793.143" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1151.65" y="729.072" fill="red">-6</text>
+<text x="810" y="663.537" fill="red">-6</text>
+<line x1="31491.2" y1="653.537" x2="-29891.2" y2="653.537" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="84159.1" y1="83801.3" x2="794.286" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1094.71" y="729.072" fill="red">-5</text>
+<text x="810" y="672.281" fill="red">-5</text>
+<line x1="32715.5" y1="662.281" x2="-31115.5" y2="662.281" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="67487.3" y1="83801.3" x2="795.429" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="1037.77" y="729.072" fill="red">-4</text>
+<text x="810" y="681.751" fill="red">-4</text>
+<line x1="34041.5" y1="671.751" x2="-32441.5" y2="671.751" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="50815.5" y1="83801.3" x2="796.572" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="980.826" y="729.072" fill="red">-3</text>
+<text x="810" y="692.043" fill="red">-3</text>
+<line x1="35482.5" y1="682.043" x2="-33882.5" y2="682.043" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="34143.6" y1="83801.3" x2="797.714" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="923.884" y="729.072" fill="red">-2</text>
+<text x="810" y="703.267" fill="red">-2</text>
+<line x1="37054.1" y1="693.267" x2="-35454.1" y2="693.267" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="17471.8" y1="83801.3" x2="798.857" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="866.942" y="729.072" fill="red">-1</text>
+<text x="810" y="715.557" fill="red">-1</text>
+<line x1="38774.9" y1="705.557" x2="-37174.9" y2="705.557" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="800" y1="83801.3" x2="800" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="810" y="729.072" fill="red">0</text>
+<text x="810" y="729.072" fill="red">0</text>
+<line x1="40667.1" y1="719.072" x2="-39067.1" y2="719.072" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-15871.8" y1="83801.3" x2="801.143" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="753.058" y="729.072" fill="red">1</text>
+<text x="810" y="744.004" fill="red">1</text>
+<line x1="42757.9" y1="734.004" x2="-41157.9" y2="734.004" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-32543.6" y1="83801.3" x2="802.286" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="696.116" y="729.072" fill="red">2</text>
+<text x="810" y="760.589" fill="red">2</text>
+<line x1="45080" y1="750.589" x2="-43480" y2="750.589" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-49215.5" y1="83801.3" x2="803.428" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="639.174" y="729.072" fill="red">3</text>
+<text x="810" y="779.118" fill="red">3</text>
+<line x1="47674.3" y1="769.118" x2="-46074.3" y2="769.118" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-65887.3" y1="83801.3" x2="804.571" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="582.233" y="729.072" fill="red">4</text>
+<text x="810" y="799.952" fill="red">4</text>
+<line x1="50591.4" y1="789.952" x2="-48991.4" y2="789.952" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-82559.1" y1="83801.3" x2="805.714" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="525.291" y="729.072" fill="red">5</text>
+<text x="810" y="823.552" fill="red">5</text>
+<line x1="53895.7" y1="813.552" x2="-52295.7" y2="813.552" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-99230.9" y1="83801.3" x2="806.857" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="468.349" y="729.072" fill="red">6</text>
+<text x="810" y="850.507" fill="red">6</text>
+<line x1="57669.8" y1="840.507" x2="-56069.8" y2="840.507" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-115903" y1="83801.3" x2="808" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="411.407" y="729.072" fill="red">7</text>
+<text x="810" y="881.587" fill="red">7</text>
+<line x1="62021.5" y1="871.587" x2="-60421.5" y2="871.587" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-132575" y1="83801.3" x2="809.143" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="354.465" y="729.072" fill="red">8</text>
+<text x="810" y="917.818" fill="red">8</text>
+<line x1="67094.3" y1="907.818" x2="-65494.3" y2="907.818" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="-149246" y1="83801.3" x2="810.285" y2="428.621" style="stroke:#A3A2A2;stroke-width:2" />
+<text x="297.523" y="729.072" fill="red">9</text>
+<text x="810" y="960.595" fill="red">9</text>
+<line x1="73083.7" y1="950.595" x2="-71483.7" y2="950.595" style="stroke:#A3A2A2;stroke-width:2" />
+<line x1="40667.1" y1="719.072" x2="-39067.1" y2="719.072" style="stroke:red;stroke-width:4" />
+<line x1="800" y1="18155" x2="800" y2="-30390.9" style="stroke:green;stroke-width:4" />
+<line x1="800" y1="83801.3" x2="800" y2="428.621" style="stroke:blue;stroke-width:4" />
+	<polygon points="854.204,759.59 854.274,651.454 745.726,651.454 745.796,759.59 " style="stroke:black;stroke-width:0" fill-opacity="1" fill="#7f7f7f"/>
+	<polygon points="854.204,759.59 745.796,759.59 740.115,793.68 859.885,793.68 " style="stroke:black;stroke-width:0" fill-opacity="1" fill="#7f7f7f"/>
+	<polygon points="859.885,793.68 859.971,674.243 854.274,651.454 854.204,759.59 " style="stroke:black;stroke-width:0" fill-opacity="1" fill="#e4e4e4"/>
+	<polygon points="745.796,759.59 745.726,651.454 740.029,674.243 740.115,793.68 " style="stroke:black;stroke-width:0" fill-opacity="1" fill="#7f7f7f"/>
+	<polygon points="745.726,651.454 854.274,651.454 859.971,674.243 740.029,674.243 " style="stroke:black;stroke-width:0" fill-opacity="1" fill="#e4e4e4"/>
+	<polygon points="740.115,793.68 740.029,674.243 859.971,674.243 859.885,793.68 " style="stroke:black;stroke-width:0" fill-opacity="1" fill="#cfcfcf"/>
+<text x="800" y="819.072" fill="red">Cube</text>
+<circle r="10" cx="800" cy="719.072" fill="red" />
+</svg>

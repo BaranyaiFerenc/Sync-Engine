@@ -50,9 +50,11 @@ public:
 
     Vector WorldToCamPosition(Vector worldPoint) const
     {
-        Vector relativePos = (worldPoint-position);
+        Vector relativePos = (position-worldPoint);
 
         return relativePos.Rotate(rotation.GetRadVector());
+
+        return worldPoint;
     }
 
 
@@ -75,9 +77,8 @@ public:
 
         //std::cout<<screenPoint<<std::endl;
 
-        
-        screenPoint.x = screenPoint.x * scaleFactor;
-        screenPoint.y = screenPoint.y * scaleFactor;
+        screenPoint.x = screenPoint.x * scaleFactor+resulotion.x/2;
+        screenPoint.y = screenPoint.y * scaleFactor+resulotion.y/2;
 
         return screenPoint;
     }
@@ -93,6 +94,46 @@ public:
 
         return pointList;
     }
+
+    Vector GetBottomBorder(double z)
+    {
+        double dist = z-near;
+
+        double ang = ((fov/2)*(M_PI/180));
+
+        double rightSide = focalLength/(cos(angle)/sin(angle));
+
+        return Vector(0,(-rightSide/(resulotion.x / resulotion.y))+position.y,0);
+    }
+    Vector GetTopBorder(double z)
+    {
+        double dist = z-near;
+
+        double ang = ((fov/2)*(M_PI/180));
+
+        double rightSide = focalLength/(cos(angle)/sin(angle));
+
+        return Vector(0,(rightSide/(resulotion.x / resulotion.y))+position.y,0);
+    }
+
+    Vector GetRightBorder(double z)
+    {
+        double dist = z-near;
+
+        double ang = ((fov/2)*(M_PI/180));
+
+        return Vector((focalLength/(cos(angle)/sin(angle)))+position.x,0,0);
+    }
+
+    Vector GetLeftBorder(double z)
+    {
+        double dist = z-near;
+
+        double ang = ((fov/2)*(M_PI/180));
+
+        return Vector((-focalLength/(cos(angle)/sin(angle)))+position.x,0,0);
+    }
+
 
 };
 

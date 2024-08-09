@@ -33,34 +33,58 @@ public:
 
     void DrawSVG(const DinArray<Object>& objArray ,BasicCamera& cam)
     {
-        double offset_x = 500;
-        double offset_y = 300;
+        double offset_x = 0;
+        double offset_y = 0;
 
         std::fstream file(path.GetText(), std::ios::out | std::ios::trunc);
 
         file<<"<svg height=\""<<heigth<<"\" width=\""<<width<<"\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background-color:gray\">\n";
 
     
-        Vector lightSource(-5,3,2);
+        Vector lightSource(-5,5,2);
         Vector lightSourceCamPos = cam.GetScreenPoint(lightSource);
 
-        file<<"<circle r=\"30\" cx=\""<<lightSourceCamPos.x+offset_x<<"\" cy=\""<<lightSourceCamPos.y+offset_y<<"\" fill=\"yellow\" />\n";
+        for(int x = -10; x < 10; x++)
+        {
+            Vector linePosStart = cam.GetScreenPoint(Vector(x,0,cam.position.z));
+            Vector linePosEnd = cam.GetScreenPoint(Vector(x, 0, cam.position.z+cam.far));
+            file<<"<line x1=\""<<linePosStart.x<<"\" y1=\""<<linePosStart.y<<"\" x2=\""<<linePosEnd.x<<"\" y2=\""<<linePosEnd.y<<"\" style=\"stroke:#A3A2A2;stroke-width:2\" />\n";
 
-        Vector xStart = cam.GetScreenPoint(Vector(-1000,0,0));
-        Vector xEnd = cam.GetScreenPoint(Vector(1000,0,0));
+            
+            Vector numbering = cam.GetScreenPoint(Vector(x, 0, 0));
+            
+            file<<"<text x=\""<<numbering.x+10<<"\" y=\""<<numbering.y+10<<"\" fill=\"red\">"<<x<<"</text>\n";
 
-        file<<"<line x1=\""<<xStart.x+offset_x<<"\" y1=\""<<xStart.y+offset_y<<"\" x2=\""<<xEnd.x+offset_x<<"\" y2=\""<<xEnd.y+offset_y<<"\" style=\"stroke:red;stroke-width:4\" />\n";
+            numbering = cam.GetScreenPoint(Vector(0, 0, x));
+            
+            file<<"<text x=\""<<numbering.x+10<<"\" y=\""<<numbering.y+10<<"\" fill=\"red\">"<<x<<"</text>\n";
+            
+            linePosStart = cam.GetScreenPoint(Vector(cam.GetLeftBorder(x).x,0,x));
+            linePosEnd = cam.GetScreenPoint(Vector(cam.GetRightBorder(x).x, 0, x));
+            file<<"<line x1=\""<<linePosStart.x<<"\" y1=\""<<linePosStart.y<<"\" x2=\""<<linePosEnd.x<<"\" y2=\""<<linePosEnd.y<<"\" style=\"stroke:#A3A2A2;stroke-width:2\" />\n";
 
-        Vector yStart = cam.GetScreenPoint(Vector(0,-1000,0));
-        Vector yEnd = cam.GetScreenPoint(Vector(0,1000,0));
+        }
 
-        file<<"<line x1=\""<<yStart.x+offset_x<<"\" y1=\""<<yStart.y+offset_y<<"\" x2=\""<<yEnd.x+offset_x<<"\" y2=\""<<yEnd.y+offset_y<<"\" style=\"stroke:green;stroke-width:4\" />\n";
+        //file<<"<circle r=\"30\" cx=\""<<lightSourceCamPos.x+offset_x<<"\" cy=\""<<lightSourceCamPos.y+offset_y<<"\" fill=\"yellow\" />\n";
+
+        Vector xStart = cam.GetScreenPoint(cam.GetLeftBorder(0));
+        Vector xEnd = cam.GetScreenPoint(cam.GetRightBorder(0));
+
+        file<<"<line x1=\""<<xStart.x<<"\" y1=\""<<xStart.y<<"\" x2=\""<<xEnd.x<<"\" y2=\""<<xEnd.y<<"\" style=\"stroke:red;stroke-width:4\" />\n";
+
+        Vector yStart = cam.GetScreenPoint(cam.GetBottomBorder(0));
+        Vector yEnd = cam.GetScreenPoint(cam.GetTopBorder(0));
+
+        file<<"<line x1=\""<<yStart.x<<"\" y1=\""<<yStart.y<<"\" x2=\""<<yEnd.x<<"\" y2=\""<<yEnd.y<<"\" style=\"stroke:green;stroke-width:4\" />\n";
 
         
-        Vector zStart = cam.GetScreenPoint(Vector(0,0,-1000));
-        Vector zEnd = cam.GetScreenPoint(Vector(0,0,1000));
+        Vector zStart = cam.GetScreenPoint(Vector(0,0,cam.position.z));
+        Vector zEnd = cam.GetScreenPoint(Vector(0,0,cam.far+cam.position.z));
 
-        file<<"<line x1=\""<<zStart.x+offset_x<<"\" y1=\""<<zStart.y+offset_y<<"\" x2=\""<<zEnd.x+offset_x<<"\" y2=\""<<zEnd.y+offset_y<<"\" style=\"stroke:blue;stroke-width:4\" />\n";
+        file<<"<line x1=\""<<zStart.x<<"\" y1=\""<<zStart.y<<"\" x2=\""<<zEnd.x<<"\" y2=\""<<zEnd.y<<"\" style=\"stroke:blue;stroke-width:4\" />\n";
+
+
+
 
         for(int i = 0; i<objArray.Length(); i++)
         {
@@ -91,7 +115,7 @@ public:
                 for(int y = 0; y<facePoint.Length();y++)
                 {
                     Vector point = cam.GetScreenPoint(facePoint[y]);
-                    file<<point.x+offset_x<<","<<point.y+offset_y<<" ";
+                    file<<point.x<<","<<point.y<<" ";
                 }
 
                 Vector faceNormal = obj.transform.mesh.GetFaceNormal(x);
@@ -123,18 +147,18 @@ public:
 
                 double rayAngle = a.GetAngle(b);
 
-                file<<"<text x=\""<<normalCamSpace.x+10+offset_x<<"\" y=\""<<normalCamSpace.y+10+offset_y<<"\" fill=\"red\">"<<rayAngle<<"</text>\n";
+                file<<"<text x=\""<<normalCamSpace.x+10<<"\" y=\""<<normalCamSpace.y+10<<"\" fill=\"red\">"<<rayAngle<<"</text>\n";
 
-                file<<"<circle r=\"1\" cx=\""<<facePivotCamSpace.x+offset_x<<"\" cy=\""<<facePivotCamSpace.y+offset_y<<"\" fill=\"purple\" />\n";
-                file<<"<line x1=\""<<facePivotCamSpace.x+offset_x<<"\" y1=\""<<facePivotCamSpace.y+offset_y<<"\" x2=\""<<normalCamSpace.x+offset_x<<"\" y2=\""<<normalCamSpace.y+offset_y<<"\" style=\"stroke:purple;stroke-width:1\" />\n";
+                file<<"<circle r=\"1\" cx=\""<<facePivotCamSpace.x<<"\" cy=\""<<facePivotCamSpace.y<<"\" fill=\"purple\" />\n";
+                file<<"<line x1=\""<<facePivotCamSpace.x<<"\" y1=\""<<facePivotCamSpace.y<<"\" x2=\""<<normalCamSpace.x<<"\" y2=\""<<normalCamSpace.y<<"\" style=\"stroke:purple;stroke-width:1\" />\n";
             
             }
 
 
 
             Vector pivotToScreen = cam.GetScreenPoint(obj.transform.Pivot());
-            file<<"<text x=\""<<pivotToScreen.x+offset_x<<"\" y=\""<<pivotToScreen.y+100+offset_y<<"\" fill=\"red\">"<<obj.name<<"</text>\n";
-            file<<"<circle r=\"10\" cx=\""<<pivotToScreen.x+offset_x<<"\" cy=\""<<pivotToScreen.y+offset_y<<"\" fill=\"red\" />\n";
+            file<<"<text x=\""<<pivotToScreen.x<<"\" y=\""<<pivotToScreen.y+100<<"\" fill=\"red\">"<<obj.name<<"</text>\n";
+            file<<"<circle r=\"10\" cx=\""<<pivotToScreen.x<<"\" cy=\""<<pivotToScreen.y<<"\" fill=\"red\" />\n";
         }
 
 
