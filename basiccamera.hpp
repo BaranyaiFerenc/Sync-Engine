@@ -103,7 +103,9 @@ public:
 
         double rightSide = focalLength/(cos(angle)/sin(angle));
 
-        return Vector(0,(-rightSide/(resulotion.x / resulotion.y))+position.y,0);
+        Vector toRotate = Vector(0,(-rightSide/(resulotion.x / resulotion.y))+position.y,0)-position;
+
+        return toRotate.Rotate(rotation.GetRadVector());
     }
     Vector GetTopBorder(double z)
     {
@@ -112,8 +114,10 @@ public:
         double ang = ((fov/2)*(M_PI/180));
 
         double rightSide = focalLength/(cos(angle)/sin(angle));
+        
+        Vector toRotate = Vector(0,(rightSide/(resulotion.x / resulotion.y))+position.y,0)-position;
 
-        return Vector(0,(rightSide/(resulotion.x / resulotion.y))+position.y,0);
+        return toRotate.Rotate(rotation.GetRadVector());
     }
 
     Vector GetRightBorder(double z)
@@ -122,7 +126,9 @@ public:
 
         double ang = ((fov/2)*(M_PI/180));
 
-        return Vector((focalLength/(cos(angle)/sin(angle)))+position.x,0,0);
+        Vector toRotate = Vector((focalLength/(cos(angle)/sin(angle)))+position.x,0,0)-position;
+
+        return toRotate.Rotate(rotation.GetRadVector());
     }
 
     Vector GetLeftBorder(double z)
@@ -130,8 +136,11 @@ public:
         double dist = z-near;
 
         double ang = ((fov/2)*(M_PI/180));
+        
 
-        return Vector((-focalLength/(cos(angle)/sin(angle)))+position.x,0,0);
+        Vector toRotate = Vector((-focalLength/(cos(angle)/sin(angle)))+position.x,0,0)-position;
+
+        return toRotate.Rotate(rotation.GetRadVector());
     }
 
 

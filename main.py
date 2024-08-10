@@ -10,7 +10,7 @@ def makeVideo():
     fps=30
     image_files = []
 
-    for rep in range(0,3):
+    for rep in range(0,1):
         for i in range(0,max):
             path = (image_folder+"/output"+str(i)+".png")
             image_files.append(path)
@@ -18,7 +18,7 @@ def makeVideo():
     clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(image_files, fps=fps)
     clip.write_videofile('my_video.mp4')
 
-    for i in range(0,0):
+    for i in range(0,max):
         os.remove(image_folder+"/output"+str(i)+".png")
 
 import os
@@ -35,7 +35,7 @@ def makePNG():
             print("Picture #"+str(i)+"done")
             print("["+(i+1)*"+"+(max-i-1)*"."+"]")
 
-    for i in range(0,0):
+    for i in range(0,max):
         os.remove("video/Donut/outdraw"+str(i)+".svg")
     
 

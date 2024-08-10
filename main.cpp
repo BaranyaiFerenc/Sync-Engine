@@ -21,12 +21,15 @@ void run()
     cam.far = 1000;
     cam.near = 0.1;
     cam.fov = 70;
-    cam.position = Vector(0,5,20);
+    cam.position = Vector(5,5,20);
     cam.resulotion = Vector(1600,900);
     cam.rotation = Rotation(M_PI/4,0,0);
 
     DinArray<Object> obj = Import::ImportObj("sample/Cube.obj");
     std::cout<<"Object count: "<<obj.Length()<<std::endl;
+
+    obj.Add(obj[0]);
+    obj[1].transform.SetPosition(Vector(0,1,30));
 
     for(int i = 0; i<obj.Length(); i++)
     {
@@ -37,7 +40,7 @@ void run()
 
     //obj[0].transform.position = Vector(1,1,1);
 
-    for(int i = 0; i<1; i++)
+    for(int i = 0; i<720; i++)
     {
         String path = "video/Donut/outdraw";
         path += std::to_string(i).c_str();
@@ -45,11 +48,12 @@ void run()
 
         SvgCreator svg(path);
         svg.DrawSVG(obj, cam);
-        
+        cam.rotation.Rotate(Vector(0,30,0));
+        /*
         for(int k = 0; k<obj.Length(); k++)
         {
             obj[k].transform.Rotate(Rotation(0,1*(M_PI/180),0));
-        }
+        }*/
     }
 
     
